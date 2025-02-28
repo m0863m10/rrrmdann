@@ -1,0 +1,132 @@
+
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تهنئة رمضان 2025</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(to bottom, #5a8f5f, #a0cfa0);
+            color: #ffffff;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+            position: relative;
+        }
+
+        header {
+            padding: 50px 20px;
+            background-color: #2f6b2f;
+            border-radius: 0 0 50% 50%;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        h1 {
+            font-size: 60px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            animation: slideIn 1s ease-out;
+        }
+
+        h2 {
+            font-size: 40px;
+            margin-top: 30px;
+            font-weight: normal;
+        }
+
+        .countdown {
+            font-size: 30px;
+            font-weight: bold;
+            color: #f1e8d6;
+            margin-top: 30px;
+        }
+
+        .prayer-times {
+            margin-top: 30px;
+            font-size: 24px;
+        }
+
+        footer {
+            background-color: #2f6b2f;
+            color: white;
+            padding: 10px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+
+        footer p {
+            font-size: 16px;
+            margin: 0;
+        }
+
+        @keyframes slideIn {
+            0% {
+                transform: translateY(-100%);
+            }
+            100% {
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>رمضان مبارك 2025</h1>
+        <p>أعاده الله عليكم باليمن والبركات.</p>
+    </header>
+
+    <div class="countdown" id="countdown"></div>
+
+    <div class="prayer-times" id="prayerTimes"></div>
+
+    <footer>
+        <p>&copy; 2025 رمضان كريم!</p>
+    </footer>
+
+    <script>
+        // Countdown for Ramadan 2025
+        const targetDate = new Date("March 27, 2025 00:00:00").getTime();
+        const countdownElement = document.getElementById("countdown");
+
+        setInterval(function() {
+            const now = new Date().getTime();
+            const distance = targetDate - now;
+
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            countdownElement.innerHTML = `يتبقى ${days} أيام, ${hours} ساعات, ${minutes} دقائق, ${seconds} ثواني`;
+
+            if (distance < 0) {
+                countdownElement.innerHTML = "رمضان قد بدأ!";
+            }
+        }, 1000);
+
+        // Prayer Times (Example with static times, ideally get from an API)
+        function updatePrayerTimes() {
+            const prayerTimes = {
+                fajr: "05:00 AM",
+                dhuhr: "12:30 PM",
+                asr: "04:00 PM",
+                maghrib: "06:30 PM",
+                isha: "08:00 PM"
+            };
+
+            const prayerTimesElement = document.getElementById("prayerTimes");
+            prayerTimesElement.innerHTML = `
+                <p>الفجر: ${prayerTimes.fajr}</p>
+                <p>الظهر: ${prayerTimes.dhuhr}</p>
+                <p>العصر: ${prayerTimes.asr}</p>
+                <p>المغرب: ${prayerTimes.maghrib}</p>
+                <p>العشاء: ${prayerTimes.isha}</p>
+            `;
+        }
+
+        updatePrayerTimes();
+    </script>
+</body>
+</html>
